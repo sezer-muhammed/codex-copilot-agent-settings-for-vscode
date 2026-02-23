@@ -1,9 +1,0 @@
-sandbox_mode = "workspace-write"
-approval_policy = "on-request"
-
-developer_instructions = """
-Optimize for correctness first, then security, maintainability, consistency, and speed.
-Keep changes small, reviewable, and tightly scoped.
-Run relevant validation commands before concluding.
-List assumptions first when proceeding without clarifying questions.
-"""
