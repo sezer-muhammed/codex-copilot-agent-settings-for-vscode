@@ -74,7 +74,7 @@ The following paths are high-risk. Changes to them require **explicit user confi
 ## 7. Standard Verification Workflow
 Before finalizing any multi-file change, agents MUST run local validation:
 1. `node scripts/validate-copilot-files.mjs` (Copilot config/agent/instruction check)
-2. `node scripts/validate-codex-files.mjs` (Codex config/role/skill check)
+2. `node scripts/validate-codex-files.mjs` (Codex config/role check)
 3. Language-specific lints/tests as identified in the task context.
 
 ## 8. Required Output Format (Transversal)

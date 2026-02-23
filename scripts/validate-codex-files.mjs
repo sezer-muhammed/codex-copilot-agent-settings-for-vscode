@@ -83,31 +83,6 @@ function validateRoles() {
   }
 }
 
-function validateSkills() {
-  if (!exists(".agents/skills")) {
-    warnings.push(".agents/skills not found; no shareable Codex skills configured");
-    return;
-  }
-
-  const skillDirs = listDirectories(".agents/skills");
-  if (skillDirs.length === 0) {
-    warnings.push("No skill directories found in .agents/skills");
-    return;
-  }
-
-  for (const skillDir of skillDirs) {
-    const skillFile = `${skillDir}/SKILL.md`;
-    if (!exists(skillFile)) {
-      errors.push(`${skillDir}: missing SKILL.md`);
-      continue;
-    }
-
-    const data = parseFrontmatter(read(skillFile));
-    if (!data.name) warnings.push(`${skillFile}: frontmatter name is missing`);
-    if (!data.description) warnings.push(`${skillFile}: frontmatter description is missing`);
-  }
-}
-
 function printAndExit() {
   if (warnings.length) {
     console.log("Warnings:");
@@ -126,5 +101,4 @@ function printAndExit() {
 validateRootFiles();
 validateCodexConfig();
 validateRoles();
-validateSkills();
 printAndExit();
