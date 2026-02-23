@@ -34,7 +34,7 @@ All agents MUST be aware of the following capabilities:
 - `Tests`: Determinism, bug-fix (repro-first) rule, and faking guidelines.
 
 ### Prompt Macros (Common Tasks)
-- `/review`, `/create-issues`, `/update-issue`, `/plan-feature`, `/implement-feature`.
+- `/review`, `/create-issues`, `/update-issue`.
 
 ## 4. Transversal Engineering Contract
 

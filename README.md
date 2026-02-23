@@ -5,13 +5,12 @@ This repository is a central infrastructure for managing AI agent behavior acros
 ---
 
 ## 1. What is this?
-This is a **configuration and policy framework** designed to standardize how AI agents interact with your codebase. It is not an application runtime; rather, it is a set of instructions, role definitions, and reusable prompts that govern agent autonomy.
+This is a **configuration and policy framework** designed to standardize how AI agents interact with my codebase. It is not an application runtime; rather, it is a set of instructions, role definitions, and reusable prompts that govern agent autonomy.
 
 ### Core Components:
 - **`AGENTS.md`**: The "Cross-Agent Spine" and normative source of truth for all agent priorities and safety boundaries.
 - **Copilot Config (`.github/`)**: Custom instructions (`.instructions.md`), agent profiles (`.agent.md`), and reusable slash-command prompts (`.prompt.md`).
 - **Codex Config (`.codex/`)**: TOML-based role mappings and execution policies for the Codex platform.
-- **Validation Suite (`scripts/`)**: Node.js validators that ensure all AI configurations are syntactically correct and follow repository standards.
 
 ---
 
@@ -43,19 +42,9 @@ Follow these steps to integrate this policy engine into your project.
 
 ### Daily Usage
 - **In VS Code Copilot**:
-  - Use **Slash Commands**: Trigger `/plan-feature` or `/review` directly from the chat.
-  - **Agent Selection**: Use the `@` symbol in Copilot Chat to select specialized profiles like `Implementer` or `Security Reviewer`.
+  - Use **Slash Commands**: Trigger commands directly from the chat.
 - **In Codex**:
   - The project will automatically load policies from `.codex/config.toml` once the workspace is trusted.
 - **Maintaining Policy**:
   - Update `AGENTS.md` whenever you add new sensitive paths or core engineering priorities.
   - Run the validation scripts before committing any changes to instruction or prompt files.
-
----
-
-## Repository Layout
-- **`.github/prompts/`**: Reusable task templates (Bugfix, Refactor, Review).
-- **`.github/instructions/`**: Language-specific rules (Python, TypeScript, ML).
-- **`.codex/roles/`**: TOML definitions for Codex agent capabilities.
-- **`docs/`**: Detailed conventions for prompts and security.
-
