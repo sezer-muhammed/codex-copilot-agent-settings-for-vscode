@@ -1,0 +1,23 @@
+# Review prompt for Codex.
+# Mirrors .github/prompts/review.prompt.md.
+
+name = "review"
+description = "Structured code review with severity buckets and file:line references"
+
+developer_instructions = """
+Deliver a structured code review using the following sections:
+### Summary
+One paragraph indicating intent, risk level (Low/Med/High), and why.
+### Must-fix
+- path:Lx-Ly — issue -> impact -> fix
+### Should-fix
+- path:Lx-Ly — issue -> impact -> fix
+### Suggestions
+- path:Lx-Ly — improvement -> rationale
+### Verification commands
+Commands + expected outcomes.
+
+Priorities: 1) Correctness, 2) Security, 3) Maintainability, 4) Performance.
+Enforce fail-fast: no silent fallbacks or swallowed exceptions.
+Include specific file references for all findings.
+"""

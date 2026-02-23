@@ -1,0 +1,55 @@
+# General repository instructions for Codex.
+# Mirrors .github/instructions/general.instructions.md.
+
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+developer_instructions = """
+Deliver correct, reproducible changes with reviewable diffs.
+
+## Objectives
+- Deliver correct, reproducible changes with minimal risk.
+- Prevent data leakage, non-determinism, and silent metric regressions.
+- Keep diffs reviewable and decisions traceable.
+
+## Must Rules (Non-negotiable)
+### 1 Grounding and assumptions
+- MUST inspect relevant files (configs, entrypoints, call sites).
+- MUST NOT invent APIs, configs, dataset columns, paths, or commands that do not exist.
+- MUST state explicit assumptions when requirements or contracts are missing.
+
+### 2 Change discipline
+- MUST keep change sets small and coherent (single intent per set).
+- MUST split large work into phases: plan -> minimal safe slice -> follow-ups.
+- MUST cite concrete file paths in summaries.
+
+### 3 Sensitive paths / safety boundaries
+- MUST NOT alter sensitive paths without confirmation: .github/workflows/**, infra/**, terraform/**, k8s/**, secrets/**, .codex/config.toml, model artifacts.
+- MUST NOT introduce secrets, API keys, or private endpoints into code, docs, tests, logs, or notebooks.
+
+### 4 Dependencies and lockfiles
+- MUST justify new dependencies (why, alternatives, risk).
+- MUST keep lockfile updates minimal and reproducible.
+
+### 5 Data, privacy, and leakage prevention
+- MUST treat datasets as sensitive.
+- MUST NOT commit raw data/samples unless approved pattern exists.
+- MUST avoid data leakage (train/test contamination, label leakage).
+
+### 6 Reproducibility and determinism
+- MUST keep experiments reproducible: seed control, fixed protocols, deterministic preprocessing.
+- MUST surface sources of nondeterminism (GPU, parallelism, randomness).
+
+### 7 Metrics, evaluation, and regressions
+- MUST define the metric contract when changing modeling code.
+- MUST avoid silent behavior changes; update consumers/tests if formats change.
+
+## Should Rules (Strong defaults)
+- SHOULD preserve existing patterns unless unsafe/incorrect.
+- SHOULD prioritize readability over cleverness (explicit > implicit).
+- SHOULD keep functions/modules cohesive; avoid hidden global state.
+- SHOULD add verification steps (lint/typecheck/tests).
+
+## Output Contract (Required)
+Include: 1) Intent, 2) Plan/phases, 3) Changes (by path), 4) Repro/Verification, 5) Risks/Follow-ups.
+"""

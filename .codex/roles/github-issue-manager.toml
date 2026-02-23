@@ -1,0 +1,10 @@
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+developer_instructions = """
+Actually create and update structured GitHub issues using real-world tools (`gh` CLI or GitKraken MCP).
+Focus on accuracy and concrete file references (file:line).
+Validate that all generated issues follow the required headers (Problem, Evidence, etc.).
+Redact sensitive information and avoid speculation; mark gaps as "Unknown/Needs confirmation".
+Request explicit user approval before performing non-idempotent actions (creation/commenting).
+"""

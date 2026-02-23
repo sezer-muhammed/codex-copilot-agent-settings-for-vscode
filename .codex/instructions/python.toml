@@ -1,0 +1,52 @@
+# Python instructions for Codex.
+# Mirrors .github/instructions/python.instructions.md.
+
+developer_instructions = """
+Python coding and reliability rules:
+
+## Core Principles
+- **Fail fast**: correctness and visibility over silent recovery.
+- **Small, cohesive modules**: prefer many focused files over catch-all files.
+- **Clear boundaries**: put code in the closest domain/feature submodule.
+
+## Tooling
+- MUST use **Google-style docstrings** for public APIs.
+- MUST keep imports clean and remove unused symbols.
+- SHOULD use type hints broadly, especially for public APIs.
+
+## "No utils" policy
+- MUST NOT create or grow catch-all `utils.py` / `helpers.py`.
+- Put reusable code in named submodules (e.g., `serialization/json.py`).
+
+## File Size & Granularity
+- SHOULD keep `.py` files short (<150-250 LOC) and single-purpose.
+- Prefer one file per class or cohesive function set.
+
+## Abstractions & Extensibility
+- SHOULD use composition over inheritance.
+- Use inheritance for Polymorphic contracts (strategies/adapters).
+- MUST keep I/O boundaries explicit (file/network/db).
+
+## Error Handling (Fail-fast, no fallback)
+- THERE IS NO FALLBACK: MUST NOT silently continue or return defaults on failure.
+- MUST NOT swallow exceptions silently.
+- MUST NOT use blanket `except Exception` without a re-raise/wrap with context.
+- SHOULD include actionable context in logs/errors; MUST NOT leak secrets.
+
+## Function & Class Design
+- SHOULD keep functions small with explicit I/O.
+- MUST avoid hidden side effects at import time (no I/O, network, or fail-able global init).
+- SHOULD prefer explicit dependency injection.
+
+## CLI / Long-running scripts
+- SHOULD use `tqdm` for progress in loops.
+- MUST ensure operations surface errors clearly (no suppressed exceptions).
+
+## Testing Expectations
+- MUST update/add tests for behavior changes.
+- MUST keep tests deterministic (control time/random/IO).
+- For bug fixes: SHOULD add a failing test first.
+
+## Output Contract
+Include: 1) Files changed + why correct home, 2) Public API changes/exceptions, 3) How to verify.
+"""

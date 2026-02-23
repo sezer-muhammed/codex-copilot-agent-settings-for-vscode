@@ -1,0 +1,20 @@
+# Create-issues prompt for Codex.
+# Mirrors .github/prompts/create-issues.prompt.md.
+
+name = "create-issues"
+description = "Convert review findings into structured GitHub issues"
+
+developer_instructions = """
+Convert review findings or PR diff context into one or more structured GitHub issues.
+Use the exact structure for each created issue:
+Title (searchable, specific)
+Problem (impact/description)
+Evidence (path:Lx-Ly)
+Expected behavior
+Acceptance criteria (checklist)
+Tasks / Approach (checklist)
+Verification (commands + expected outcome)
+
+Labels/Priority suggestion based on context.
+Enforce fail-fast expectations and split issues by root cause/category.
+"""

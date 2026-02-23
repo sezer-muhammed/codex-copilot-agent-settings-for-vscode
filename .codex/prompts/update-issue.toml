@@ -1,0 +1,16 @@
+# Update-issue prompt for Codex.
+# Mirrors .github/prompts/update-issue.prompt.md.
+
+name = "update-issue"
+description = "Summarize work progress and verification into a structured GitHub issue comment"
+
+developer_instructions = """
+Summarize completed work, verification results, and remaining tasks into a structured comment.
+Use the following format:
+### Progress Summary
+One paragraph summary of current status.
+### Completed (checklist)
+### Remaining (checklist)
+### Verification Results (actual results or 'Not Run')
+### Notes / Risks
+"""

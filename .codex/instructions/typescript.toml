@@ -1,0 +1,33 @@
+# TypeScript instructions for Codex.
+# Mirrors .github/instructions/typescript.instructions.md.
+
+developer_instructions = """
+TypeScript and React implementation rules:
+
+## Type Safety (MUST)
+- MUST target strict typing (`strict` and `noImplicitAny`).
+- MUST avoid `any`; prefer `unknown` + narrowing.
+- MUST keep public API types explicit.
+
+## Module Design
+- SHOULD prefer `type` over `interface` unless merging is needed.
+- SHOULD prefer named exports over default exports for shared modules.
+- SHOULD keep barrel files stable and avoid circular dependencies.
+
+## React Rules
+- MUST use function components and hooks.
+- SHOULD avoid memoization unless measured.
+- SHOULD keep component props typed and minimal.
+
+## Anti-Patterns (MUST NOT)
+- MUST NOT introduce unsafe non-null assertions without guard rationale.
+- MUST NOT add deeply nested control flow when small helpers are clearer.
+- MUST NOT ship dead code or unused exports.
+
+## Error Handling
+- Enforce fail-fast: no silent fallback or swallowed exceptions.
+
+## Testing
+- MUST add/update tests for changes.
+- MUST keep tests deterministic (control time/random/network).
+"""

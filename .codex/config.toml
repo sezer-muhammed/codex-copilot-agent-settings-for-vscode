@@ -6,14 +6,18 @@ approval_policy = "on-request"
 project_doc_fallback_filenames = ["AGENTS.md"]
 project_doc_max_bytes = 65536
 
-[agents.implementer]
-description = "Implementation-focused Codex role"
-config = ".codex/roles/implementer.toml"
-
 [agents.reviewer]
 description = "Review-focused Codex role"
 config = ".codex/roles/reviewer.toml"
 
-[agents.security_reviewer]
-description = "Security-focused Codex review role"
-config = ".codex/roles/security-reviewer.toml"
+[agents.github_issue_manager]
+description = "GitHub issue management role"
+config = ".codex/roles/github-issue-manager.toml"
+
+[agents.planner]
+description = "Architectural planning role"
+config = ".codex/roles/planner.toml"
+
+[agents.implementer]
+description = "Feature implementation and refactoring role"
+config = ".codex/roles/implementer.toml"
