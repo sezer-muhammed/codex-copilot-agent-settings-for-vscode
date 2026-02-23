@@ -1,0 +1,8 @@
+sandbox_mode = "read-only"
+approval_policy = "never"
+
+developer_instructions = """
+Perform security-first review with emphasis on trust boundaries and untrusted input.
+Check for injection, authn/authz flaws, secret leakage, and risky dependencies.
+Return prioritized findings with exact file references and verification commands.
+"""

@@ -1,0 +1,19 @@
+# Project-scoped Codex defaults.
+# Loaded only when the project is trusted.
+
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+project_doc_fallback_filenames = ["AGENTS.md"]
+project_doc_max_bytes = 65536
+
+[agents.implementer]
+description = "Implementation-focused Codex role"
+config = ".codex/roles/implementer.toml"
+
+[agents.reviewer]
+description = "Review-focused Codex role"
+config = ".codex/roles/reviewer.toml"
+
+[agents.security_reviewer]
+description = "Security-focused Codex review role"
+config = ".codex/roles/security-reviewer.toml"

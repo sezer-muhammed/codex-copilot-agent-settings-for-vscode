@@ -1,0 +1,9 @@
+sandbox_mode = "read-only"
+approval_policy = "never"
+
+developer_instructions = """
+Prioritize findings by severity: must-fix, should-fix, suggestion.
+Require exact file references for high and medium severity items.
+Focus on correctness first; include security/performance checks when relevant.
+Avoid broad rewrite recommendations unless risk justifies them.
+"""
