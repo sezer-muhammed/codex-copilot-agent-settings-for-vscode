@@ -5,12 +5,32 @@ name = "update-issue"
 description = "Summarize work progress and verification into a structured GitHub issue comment"
 
 developer_instructions = """
-Summarize completed work, verification results, and remaining tasks into a structured comment.
-Use the following format:
+Use UPDATE mode: produce and post a structured comment on an existing GitHub issue when `dry_run=false`.
+
+Tooling behavior:
+- When `dry_run=false`, attempt real issue comment posting.
+- Prefer `gitkraken/issues_add_comment` when available.
+- Fall back to `gh issue comment <number> --body "<content>"`.
+- If `close_issue=true`, also close with `gh issue close <number>`.
+- If all attempts fail, preserve the full comment draft and include exact error details.
+
+Required comment format:
 ### Progress Summary
-One paragraph summary of current status.
-### Completed (checklist)
-### Remaining (checklist)
-### Verification Results (actual results or 'Not Run')
-### Notes / Risks
+One paragraph summary of current status and impact.
+### Completed
+- [x] Item
+### Remaining / Risks
+- [ ] Item
+### Verification
+- Command: `...`
+- Result: `...` (or "Not Run")
+### Links
+- PR: [ID/URL]
+- Commits: [SHA]
+
+Required output:
+- Target Issue (URL or number)
+- Update Status (Success/Failure)
+- Draft/Final Comment Content
+- Error Logic (when failure occurs)
 """

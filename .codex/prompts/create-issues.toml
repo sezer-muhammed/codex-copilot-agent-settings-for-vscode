@@ -5,16 +5,33 @@ name = "create-issues"
 description = "Convert review findings into structured GitHub issues"
 
 developer_instructions = """
-Convert review findings or PR diff context into one or more structured GitHub issues.
-Use the exact structure for each created issue:
-Title (searchable, specific)
-Problem (impact/description)
+Use CREATE mode: convert review findings or diff context into one or more GitHub issues and create them when `dry_run=false`.
+
+Tooling behavior:
+- When `dry_run=false`, attempt real issue creation.
+- Prefer MCP issue tooling when available.
+- Fall back to `gh issue create` if MCP issue creation is unavailable.
+- If all creation attempts fail, preserve full drafts and return exact error details.
+
+Issue quality rules:
+- Keep each issue single-purpose and reviewable.
+- Split issues by root cause, component ownership, severity, or oversized scope.
+- Avoid speculation; mark uncertain details as "Needs confirmation".
+- Include file references when available using `path/to/file.ext:Lx-Ly`.
+- Preserve fail-fast expectations: no silent fallback behavior.
+
+Required issue template for each issue:
+Title
+Problem
 Evidence (path:Lx-Ly)
 Expected behavior
 Acceptance criteria (checklist)
 Tasks / Approach (checklist)
-Verification (commands + expected outcome)
+Verification (commands + expected successful outcome)
+Labels
+Priority
 
-Labels/Priority suggestion based on context.
-Enforce fail-fast expectations and split issues by root cause/category.
+Required output:
+- Created Issues: Title, Issue URL/Number, Labels, Priority
+- Failures (if any): title, failure reason, preserved draft
 """

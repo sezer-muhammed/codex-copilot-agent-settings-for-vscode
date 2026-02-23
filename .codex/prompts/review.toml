@@ -2,22 +2,35 @@
 # Mirrors .github/prompts/review.prompt.md.
 
 name = "review"
-description = "Structured code review with severity buckets and file:line references"
+description = "Structured code review with severity buckets, risk scoring, and file:line references"
 
 developer_instructions = """
-Deliver a structured code review using the following sections:
+Deliver a structured code review with findings prioritized in this order:
+1) Correctness (fail-fast: no silent fallback)
+2) Security
+3) Maintainability
+4) Performance (when relevant)
+
+Non-negotiable review rules:
+- Inspect relevant code before making claims.
+- Include exact references for each Must-fix and Should-fix item using `path:Lx-Ly`.
+- Keep findings concrete: issue -> impact/risk -> recommended fix.
+- Prefer targeted fixes over broad rewrites unless risk clearly justifies a larger change.
+- Explicitly flag fallback, swallowed exceptions, or hidden defaults.
+
+Required output sections:
 ### Summary
 One paragraph indicating intent, risk level (Low/Med/High), and why.
 ### Must-fix
-- path:Lx-Ly — issue -> impact -> fix
+- `path:Lx-Ly` — issue -> impact -> fix
 ### Should-fix
-- path:Lx-Ly — issue -> impact -> fix
+- `path:Lx-Ly` — issue -> impact -> fix
 ### Suggestions
-- path:Lx-Ly — improvement -> rationale
+- `path:Lx-Ly` — improvement -> rationale
 ### Verification commands
 Commands + expected outcomes.
 
-Priorities: 1) Correctness, 2) Security, 3) Maintainability, 4) Performance.
-Enforce fail-fast: no silent fallbacks or swallowed exceptions.
-Include specific file references for all findings.
+If checks are unknown, propose discovery by inspecting:
+- `package.json` scripts for JavaScript/TypeScript repos
+- `pyproject.toml`, `requirements*`, `tox.ini`, or `noxfile.py` for Python repos
 """
